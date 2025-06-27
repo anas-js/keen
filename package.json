@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lic": "node licHelper"
+    "lic": "node licHelper",
+     "export": "next export",
+  "postbuild": "npm run export"
   },
   "dependencies": {
     "@heroui/react": "^2.7.10",
