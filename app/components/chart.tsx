@@ -26,7 +26,7 @@ ChartJs.register(
 import { useEffect, useRef, useState } from "react";
 
 export default function Chart({ row, column, total, compare }) {
-  const [color, setColor] = useState(
+  const [color] = useState(
     total === compare ? "#077a7d" : total > compare ? "#06202B" : "#f31260"
   );
   const chartRef = useRef(null!);

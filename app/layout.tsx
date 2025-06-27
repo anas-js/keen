@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 // import "./globals.css";
 import "./styles/globals.scss";
 import {Providers} from "./providers";
+import { Suspense } from "react";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -27,9 +28,11 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body>
-      <Providers>
+        <Suspense>
+           <Providers>
           {children}
         </Providers>
+        </Suspense>
       </body>
     </html>
   );
