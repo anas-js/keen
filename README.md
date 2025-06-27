@@ -1,3 +1,7 @@
+<p align="center"><img src="https://raw.githubusercontent.com/anas-js/keen/refs/heads/main/public/images/fill.svg" width="auto" alt="Bariq Logo"></p>
+
+## NEXTJs
+<p align="center"><img src="https://raw.githubusercontent.com/anas-js/keen/refs/heads/main/public/next.svg" width="300" alt="Bariq Logo"></p>
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
