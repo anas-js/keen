@@ -8,12 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "lic": "node licHelper",
-     "export": "next export",
-  "postbuild": "npm run export"
+    "export": "next export",
+    "postbuild": "npm run export"
   },
   "dependencies": {
     "@heroui/react": "^2.7.10",
     "@netlify/next": "^1.4.9",
+    "@netlify/plugin-nextjs": "^5.11.4",
     "chart.js": "^4.5.0",
     "dexie-react-hooks": "^1.1.7",
     "framer-motion": "^12.18.1",
