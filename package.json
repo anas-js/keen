@@ -6,20 +6,32 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lic": "node licHelper"
   },
   "dependencies": {
+    "@heroui/react": "^2.7.10",
+    "chart.js": "^4.5.0",
+    "dexie-react-hooks": "^1.1.7",
+    "framer-motion": "^12.18.1",
+    "fs-extra": "^11.3.0",
+    "next": "15.3.3",
+    "nprogress": "^0.2.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.3"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
+    "@types/nprogress": "^0.2.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
-    "@eslint/eslintrc": "^3"
+    "postcss": "^8.5.5",
+    "sass": "^1.89.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
   }
 }

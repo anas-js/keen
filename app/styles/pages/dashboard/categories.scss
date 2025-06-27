@@ -1,0 +1,48 @@
+.CategoriesPage {
+    .header {
+        // h1 {
+        //     display: inline-block;
+        //     vertical-align: middle;
+        // }
+        button {
+            // display: inline-block;
+            // margin-inline-start: 5px;
+            margin-top: 10px;
+        }
+    }
+
+    .categories {
+         > a {
+            margin: 5px;
+            margin-top: 10px;
+            padding: 20px;
+            width: 100%;
+            display: block;
+            background-color: rgba($color: $color_b, $alpha: 0.1);
+            border-radius: 12px;
+
+            h3 {
+                color: $color_a;
+                font-weight: bold;
+                font-size: 20px;
+            }
+        }
+    }
+
+}
+
+
+.formAddedNewCategorie {
+    .buttons {
+         display: flex;
+        // text-align: center;
+        // background-color: #000;
+        
+
+        button {
+            margin-inline-start: 4px;
+        }
+    }
+
+
+}

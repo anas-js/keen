@@ -1,0 +1,39 @@
+.indexPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .main-card {
+        box-shadow: none;
+     
+        width: 400px;
+        * {
+            text-align: right ;
+        }
+
+        // .header {
+        //     text-align: center;
+        //     margin: 0 auto;
+        //     font-size: 40px;
+        //     font-weight: bold;
+        //     color: $color_a;
+        // }
+
+        .logo {
+            border-radius: 24px;
+        }
+
+        .form {
+            margin-top: 20px;
+
+            p {
+                margin:5px 0;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,106 @@
+.dashboardPage {
+    // color: $color_a;
+    .statistics {
+        margin-top: 20px;
+        display: flex;
+
+        gap: 20px;
+        flex-wrap: wrap;
+        > div {
+            // width: 350px;
+            flex: 1 0 calc(33% - 10px);
+            box-sizing: border-box;
+            padding: 20px 24px;
+            background-color: $color_white;
+            border-radius: 37.92px;
+            position: relative;
+            padding-bottom: 90px;
+
+            .loading {
+                svg {
+                    fill: $color_a;
+                }
+            }
+
+
+            .top {
+
+                > * {
+                    display: inline-block;
+                }
+                .title {
+                    font-size: 17px;
+                    color: $color_d;
+                }
+
+                .tag {
+                    display: inline-block;
+                    padding: 0px 7px;
+                    direction: ltr;
+                    border-radius: 24px;
+                    font-weight: bold;
+                    margin-inline-end: 10px;
+                    &.green {
+                        background-color: rgba($color: $color_green, $alpha: 0.2);
+                        color: $color_green;
+                    }
+
+                    &.red {
+                        background-color: rgba($color: $color_red, $alpha: 0.2);
+                        color: $color_red;
+                    }
+                }
+
+            }
+
+
+            &.lineChart {
+                .value {
+                    color: $color_a;
+                    margin-top: -15px;
+
+                    h2 {
+                        font-size: 47px;
+                    }
+                    p {
+                        margin-inline-start: 5px;
+                    }
+
+                    > * {
+                        display: inline-block;
+                        font-weight: bold;
+                    }
+
+                }
+
+                .chart {
+                    position: absolute;
+                    width: calc(100% + 16px);
+                    bottom: 22px;
+                    left: -8px;
+                    height: 48%;
+
+                    canvas {
+                        overflow: hidden;
+                        // border-radius: 37.92px 0 0 37.92px ;
+                    }
+                }
+            }
+
+
+
+
+        }
+    }
+
+    .select-time {
+        .button {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: $color_a;
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+.side-mune {
+    width: 300px;  
+
+    padding: 20px;
+
+    .logo {
+        width: 140px;
+        margin: 0 auto;
+        
+        img {
+            border-radius: 14px;
+        }
+    }
+    h1 {
+        color: $color_a;
+        font-size: 35px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .list {
+        padding: 5px;
+        color: $color_d;
+        margin-top: 20px;
+
+        li {
+            padding: 0px 10px;
+             margin: 10px 0;
+            border-radius: 15px;
+            color: $color_a;
+            position: relative;
+            width: fit-content;
+            &.active {
+                //   background-color: $color_b;
+              
+                color: $color_a;
+                font-weight: bold;
+                font-size: 20px;
+
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 40%;
+                    height: 5px;
+                    bottom: 5px;
+                    z-index: -1;
+                    background-color: $color_b;
+                }
+            }
+        }
+    }
+}
