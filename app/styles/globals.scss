@@ -85,8 +85,19 @@ body {
 @import "pages/dashboard/exercise.scss";
 @import "pages/dashboard/index.scss";
 @import "pages/dashboard/about.scss";
+@import "pages/dashboard/mobile.scss";
 
 @import "components/loading.scss";
 @import "components/dashboard/side-mune.scss";
 
 @import "layouts/dashboard.scss";
+
+
+
+@import "res/pages/dashboard/index.scss";
+@import "res/pages/dashboard/categorie.scss";
+@import "res/pages/dashboard/exercise.scss";
+
+@import "res/components/dashboard/side-mune.scss";
+
+@import "res/layouts/dashboard.scss";

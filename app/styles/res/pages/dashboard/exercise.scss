@@ -1,0 +1,121 @@
+
+
+@media (max-width: 1210px) {
+  .ExercisePage {
+    width: 100%;
+  
+    .exercise-image {
+      width: 100%;
+      max-height: 100%;
+    }
+
+    .content {
+      .boxs {
+    
+        > div {
+          display: flex;
+          // justify-content: space-between;
+
+          // .input-repet {
+          //   flex: unset;
+          
+          // }
+
+          // .input-weight {
+          //   flex: unset;
+          // }
+          // .unit {
+          //   flex: unset;
+          // }
+
+        }
+      }
+    }
+  }
+  
+}
+
+@media (max-width: 775px) {
+  .ExercisePage {
+    width: 100%;
+  
+    .rounded-large {
+      // width: 100% !important;
+      max-width: 100% !important;
+  
+    }
+  
+
+
+  }
+}
+
+@media (max-width: 870px) {
+  .ExercisePage {
+
+
+    .content {
+      .boxs {
+    
+        > div {
+          // display: flex;
+          flex-wrap: wrap;
+          // justify-content: space-between;
+          margin-top: 25px !important;
+
+          &:first-of-type {
+            .delete-round {
+              display: none;
+            }
+          }
+
+
+          .input-repet {
+            flex: 0 0 100% !important;
+          
+          }
+
+
+        }
+      }
+    }
+  }
+  
+}
+
+
+@media (max-width: 343px) {
+  .ExercisePage {
+
+
+    .content {
+      .boxs {
+    
+        > div {
+
+          &:not(:first-of-type) {
+            .input-weight {
+              flex: 0 0 calc(40% - 10px)  !important;
+            }
+            .unit {
+              flex: 0 0 calc(40% - 10px)  !important;
+            }
+  
+     
+            .delete-round {
+              flex: 0 0 20% !important;
+         
+            }
+          }
+          
+   
+
+
+
+        }
+      }
+    }
+  }
+}
+
+

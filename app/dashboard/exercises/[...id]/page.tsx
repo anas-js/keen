@@ -479,7 +479,8 @@ export default function ExercisePage({ params }) {
                       <Input
                         onChange={(e) => updateRounds(e, i, "repet")}
                         value={String(r.repet)}
-                        className="input-repet"
+                        className="input input-repet"
+                     
                         min={0}
                         type="number"
                         label="كم تكرار؟"></Input>
@@ -487,14 +488,14 @@ export default function ExercisePage({ params }) {
                         onChange={(e) => updateRounds(e, i, "weight")}
                         value={String(r.weight)}
                         min={0}
-                        className="input-weight"
+                        className="input input-weight"
                         type="number"
                         label="الوزن"></Input>
                       <Select
                         disallowEmptySelection={true}
                         onChange={(e) => updateRounds(e, i, "unit")}
                         selectedKeys={[r.unit]}
-                        className="unit"
+                        className="input unit"
                         label="القياس">
                         <SelectItem key="kg">kg</SelectItem>
                         <SelectItem key="lb">lb</SelectItem>

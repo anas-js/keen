@@ -1,0 +1,10 @@
+@media (max-width: 930px) {
+  .dashboardPage {
+    .statistics {
+      > div {
+        // width: 350px;
+        flex: 1 0 100%;
+      }
+    }
+  }
+}

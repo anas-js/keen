@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Auth from "./middlewares/auth";
 import InitDB from "./middlewares/initDB";
 import Loading from "./components/loading";
+import initPWA from "./middlewares/initPWA";
 
 export default function Middlewares({
   children,
@@ -31,7 +32,7 @@ export default function Middlewares({
    
     async function init() {
       await InitDB(context);
-
+      await initPWA();
       setLoading((l) => ({ ...l,  once: false }));
     }
     init();

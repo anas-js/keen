@@ -1,52 +1,97 @@
 .side-mune {
     width: 300px;  
-
     padding: 20px;
+    background-color: $color_white;
+    z-index: 15;
 
-    .logo {
-        width: 140px;
-        margin: 0 auto;
-        
-        img {
-            border-radius: 14px;
+    .desktop {
+        .logo {
+            width: 140px;
+            margin: 0 auto;
+            
+            img {
+                border-radius: 14px;
+            }
         }
-    }
-    h1 {
-        color: $color_a;
-        font-size: 35px;
-        text-align: center;
-        font-weight: bold;
-    }
-    .list {
-        padding: 5px;
-        color: $color_d;
-        margin-top: 20px;
-
-        li {
-            padding: 0px 10px;
-             margin: 10px 0;
-            border-radius: 15px;
+        h1 {
             color: $color_a;
-            position: relative;
-            width: fit-content;
-            &.active {
-                //   background-color: $color_b;
-              
+            font-size: 35px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .list {
+            padding: 5px;
+            color: $color_d;
+            margin-top: 20px;
+    
+            li {
+                padding: 0px 10px;
+                 margin: 10px 0;
+                border-radius: 15px;
                 color: $color_a;
-                font-weight: bold;
-                font-size: 20px;
-
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    width: 40%;
-                    height: 5px;
-                    bottom: 5px;
-                    z-index: -1;
-                    background-color: $color_b;
+                position: relative;
+                width: fit-content;
+                &.active {
+                    //   background-color: $color_b;
+                  
+                    color: $color_a;
+                    font-weight: bold;
+                    font-size: 20px;
+    
+    
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        width: 40%;
+                        height: 5px;
+                        bottom: 5px;
+                        z-index: -1;
+                        background-color: $color_b;
+                    }
                 }
             }
         }
     }
+
+    .mobile {
+        display: none;
+
+        .list {
+            width: 100%;
+            ul {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                
+                li {
+                    flex: 1 0 25%;
+                    padding: 5px 0;
+                    a {
+                        text-align: center;
+                        display: block;
+                        margin: 0 auto;
+
+                        span {
+                            font-size: 20px;
+                        }
+
+                        p {
+                            font-size:  13px;
+                        }
+                        // font-size: 100%;
+                    }
+
+                    &.active {
+                        background-color: rgba($color: $color_b, $alpha: 0.25);
+                        border-radius: 12px;
+                        color: $color_a;
+                        
+                    }
+                }
+
+               
+            }
+        }
+    }
+
 }
