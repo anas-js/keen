@@ -36,7 +36,7 @@ export default function App() {
         </CardHeader>
         <CardBody>
           <div className="form">
-            <p>المكان اللي تسجل في تطورك العضلي</p>
+            <p>احفظ اوزانك وتابع اوزانك هنا</p>
             <Form onSubmit={startApp}>
               <Input
                 onChange={(e) => setName(e.target.value)}

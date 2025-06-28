@@ -59,6 +59,7 @@ export default async function RootLayout({
         <link rel="icon" href="/pwa/icon-512x512.png" sizes="512x512" type="image/png" />
         <link rel="apple-touch-icon" href="/pwa/icon-192x192.png" />
         <link rel="shortcut icon" href="/pwa/icon-192x192.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body>
        
