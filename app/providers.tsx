@@ -11,33 +11,20 @@ import Middlewares from "@/app/Middlewares";
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-
 // import Loading from "./components/loading";
 export function Providers({ children }: { children: React.ReactNode }) {
-  // const router = useRouter();
+
   const path = usePathname();
   const params = useSearchParams();
 
- 
-
-  useEffect(()=> {
-    // router.events.on("routeChangeStart", () => {
-    //   console.log("d");
-    // });
-    // router.events.on("routeChangeComplete", () => NProgress.done());
-    // router.events.on("routeChangeError", () => NProgress.done());
+  useEffect(() => {
     NProgress.done();
     // console.log("start");
-
     return () => {
-     
       NProgress.start();
-      // console.log("end");
-    }
-    
-  },[path,params])
+    };
+  }, [path, params]);
 
-  
   return (
     // <AuthMiddleware>
     <Middlewares>
