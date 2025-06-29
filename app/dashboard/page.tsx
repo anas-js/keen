@@ -225,17 +225,17 @@ export default function DashboardPage() {
 
     const showData = await db.days
       .where("date")
-      .between(dates?.show[0], dates?.show[1])
+      .between(dates?.show[0], dates?.show[1],true,true)
       .reverse()
       .toArray();
 
-    // console.log(dates?.show[0], dates?.show[1],'test');
+  //    console.log(dates?.show[0], dates?.show[1],'test');
 
-    // console.log(dateHelper({setDate:dates?.show[0],dateAsText:true}), dateHelper({setDate:dates?.show[1],dateAsText:true}));
+  //  console.log(dateHelper({setDate:dates?.show[0],dateAsText:true}), dateHelper({setDate:dates?.show[1],dateAsText:true}));
 
     const compareData = await db.days
       .where("date")
-      .between(dates?.compare[0], dates?.compare[1])
+      .between(dates?.compare[0], dates?.compare[1],true,true)
       .reverse()
       .toArray();
 

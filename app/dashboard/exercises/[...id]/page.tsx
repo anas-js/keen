@@ -248,7 +248,7 @@ export default function ExercisePage({ params }) {
     let offset = offsetDays;
     const groupDays = await db.days
       .where("[exercise_id+date]")
-      .between([+id, Dexie.minKey], [+id, Dexie.maxKey])
+      .between([+id, Dexie.minKey], [+id, Dexie.maxKey],true,true)
       .reverse()
       .offset(offset)
       .limit(7)
