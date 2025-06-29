@@ -443,6 +443,7 @@ export default function DashboardPage() {
     async function init() {
       const settingsLoad = (await db.settings.get(1)!) as settings;
       setSettings(settingsLoad);
+      setSelectdTime({key:settingsLoad.defaultStatistics, title:times[settingsLoad.defaultStatistics]});
       await calcAll(settingsLoad.defaultStatistics, settingsLoad);
     }
     init();
