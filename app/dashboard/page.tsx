@@ -565,7 +565,7 @@ export default function DashboardPage() {
             </div>
             <div className="value">
               <h2>{totalRounds.total}</h2>
-              <p>عدة</p>
+              <p>جوله</p>
             </div>
             <div className="chart">
               <Chart
