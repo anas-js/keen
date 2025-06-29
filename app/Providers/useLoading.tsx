@@ -18,7 +18,7 @@ export function useLoading() {
 
 export function LoadingProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(false);
-
+{/* <Loading full /> */}
   return (
     <LoadingContext.Provider value={setLoading}>
       {loading && <Loading full />}

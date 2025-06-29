@@ -1,5 +1,10 @@
 .dashboardPage {
     // color: $color_a;
+    .header {
+        h1 {
+            max-width: calc(100% - 165px);
+        }
+    }
     .statistics {
         margin-top: 20px;
         display: flex;

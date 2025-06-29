@@ -9,6 +9,12 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  useDisclosure,
 } from "@heroui/react";
 import Chart from "../components/chart";
 
@@ -61,6 +67,7 @@ export default function DashboardPage() {
     compare: 0,
     total: 0,
   });
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   function dateAnalysis(status: string) {
     switch (status) {
@@ -118,8 +125,6 @@ export default function DashboardPage() {
           setDate: date,
         });
 
-
-        
         return {
           show: [startDate, endDate],
           compare: [startDateCompare, endDateCompare],
@@ -217,8 +222,6 @@ export default function DashboardPage() {
     // }
 
     const dates = dateAnalysis(status);
-
-    
 
     const showData = await db.days
       .where("date")
@@ -443,8 +446,15 @@ export default function DashboardPage() {
     async function init() {
       const settingsLoad = (await db.settings.get(1)!) as settings;
       setSettings(settingsLoad);
-      setSelectdTime({key:settingsLoad.defaultStatistics, title:times[settingsLoad.defaultStatistics]});
+      setSelectdTime({
+        key: settingsLoad.defaultStatistics,
+        title: times[settingsLoad.defaultStatistics],
+      });
       await calcAll(settingsLoad.defaultStatistics, settingsLoad);
+
+      if (!(await db.notifications.get({ id: "warning" }))) {
+        onOpen();
+      }
     }
     init();
   }, []);
@@ -454,7 +464,7 @@ export default function DashboardPage() {
   // }
 
   async function refreshDate(e) {
-    await db.settings.update(1,{defaultStatistics:e.currentKey});
+    await db.settings.update(1, { defaultStatistics: e.currentKey });
     calcAll(e.currentKey, settings).then(() => {
       setSelectdTime({
         title: times[e.currentKey],
@@ -463,26 +473,34 @@ export default function DashboardPage() {
     });
   }
 
-  function levelCalc(total,compare) {
+  function levelCalc(total, compare) {
     // console.log(total,compare);
-    if(compare == 0) {
+    if (compare == 0) {
       return total;
     }
     return Math.round(((total - compare) / compare) * 100);
-  
+  }
+
+  async function setDone() {
+    await db.notifications.add({
+      id: "warning",
+    });
+    onClose();
   }
 
   return (
     <div className="dashboardPage">
       <div className="header">
-       
         <h1>
           {title}, {settings?.name}
         </h1>
         <div className="select-time">
           <Dropdown>
             <DropdownTrigger>
-              <Button className="button" isLoading={loadingData} variant="light">
+              <Button
+                className="button"
+                isLoading={loadingData}
+                variant="light">
                 {selectdTime.title} ⬇️
               </Button>
             </DropdownTrigger>
@@ -496,7 +514,6 @@ export default function DashboardPage() {
               {Object.keys(times).map((o) => {
                 return <DropdownItem key={o}>{times[o]}</DropdownItem>;
               })}
-             
             </DropdownMenu>
           </Dropdown>
         </div>
@@ -507,9 +524,13 @@ export default function DashboardPage() {
             <div className="top">
               <p className="title">مجموع الاوزان 🔥</p>
               {totalWeights.total > totalWeights.compare ? (
-                <span className="tag green">+{levelCalc(totalWeights.total,totalWeights.compare)}%</span>
+                <span className="tag green">
+                  +{levelCalc(totalWeights.total, totalWeights.compare)}%
+                </span>
               ) : totalWeights.total < totalWeights.compare ? (
-                <span className="tag red">{levelCalc(totalWeights.total,totalWeights.compare)}%</span>
+                <span className="tag red">
+                  {levelCalc(totalWeights.total, totalWeights.compare)}%
+                </span>
               ) : (
                 ""
               )}
@@ -519,16 +540,25 @@ export default function DashboardPage() {
               <p>{settings?.defaultUnit}</p>
             </div>
             <div className="chart">
-              <Chart row={totalWeights.chart.date} column={totalWeights.chart.value} total={totalWeights.total} compare={totalWeights.compare} />
+              <Chart
+                row={totalWeights.chart.date}
+                column={totalWeights.chart.value}
+                total={totalWeights.total}
+                compare={totalWeights.compare}
+              />
             </div>
           </div>
           <div className="lineChart">
             <div className="top">
               <p className="title">مجموع الجولات 🪐</p>
               {totalRounds.total > totalRounds.compare ? (
-                <span className="tag green">+{levelCalc(totalRounds.total,totalRounds.compare)}%</span>
+                <span className="tag green">
+                  +{levelCalc(totalRounds.total, totalRounds.compare)}%
+                </span>
               ) : totalRounds.total < totalRounds.compare ? (
-                <span className="tag red">{levelCalc(totalRounds.total,totalRounds.compare)}%</span>
+                <span className="tag red">
+                  {levelCalc(totalRounds.total, totalRounds.compare)}%
+                </span>
               ) : (
                 ""
               )}
@@ -538,16 +568,25 @@ export default function DashboardPage() {
               <p>عدة</p>
             </div>
             <div className="chart">
-              <Chart row={totalRounds.chart.date} column={totalRounds.chart.value} total={totalRounds.total} compare={totalRounds.compare} />
+              <Chart
+                row={totalRounds.chart.date}
+                column={totalRounds.chart.value}
+                total={totalRounds.total}
+                compare={totalRounds.compare}
+              />
             </div>
           </div>
           <div className="lineChart">
             <div className="top">
               <p className="title">مجموع التكرارات ➿</p>
               {totalRepet.total > totalRepet.compare ? (
-                <span className="tag green">+{levelCalc(totalRepet.total,totalRepet.compare)}%</span>
+                <span className="tag green">
+                  +{levelCalc(totalRepet.total, totalRepet.compare)}%
+                </span>
               ) : totalRepet.total < totalRepet.compare ? (
-                <span className="tag red">{levelCalc(totalRepet.total,totalRepet.compare)}%</span>
+                <span className="tag red">
+                  {levelCalc(totalRepet.total, totalRepet.compare)}%
+                </span>
               ) : (
                 ""
               )}
@@ -557,10 +596,41 @@ export default function DashboardPage() {
               <p>تكرار</p>
             </div>
             <div className="chart">
-              <Chart row={totalRepet.chart.date} column={totalRepet.chart.value} total={totalRepet.total} compare={totalRepet.compare} />
+              <Chart
+                row={totalRepet.chart.date}
+                column={totalRepet.chart.value}
+                total={totalRepet.total}
+                compare={totalRepet.compare}
+              />
             </div>
           </div>
         </div>
+
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+          <ModalContent>
+            {(onClose) => (
+              <>
+                <ModalHeader className="flex flex-col gap-1">
+                  لازم تعرف 🐛!
+                </ModalHeader>
+                <ModalBody>
+                  <p>
+                    مرحبًا {settings.name} 👋، حبيت أبلغك إن هذا المشروع تجريبي
+                    وما أقدر أضمن استمراريته أو حفظ البيانات اللي تضيفها. ممكن
+                    يتوقف في أي وقت أو يتم تحديثه بشكل يحذف كل البيانات. حبيت
+                    أوضح لك من البداية علشان تكون بالصورة وتتجنب أي إحباط
+                    مستقبلي.
+                  </p>
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onPress={setDone}>
+                    تمام
+                  </Button>
+                </ModalFooter>
+              </>
+            )}
+          </ModalContent>
+        </Modal>
       </div>
     </div>
   );

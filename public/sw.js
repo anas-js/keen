@@ -13,8 +13,8 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // فقط خزن إذا الاستجابة سليمة (status 200)
-        if (!response || response.status !== 200) {
+       
+        if (!response || response.status !== 200 || event.request.method !== "GET") {
           return response;
         }
 

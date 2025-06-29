@@ -31,19 +31,24 @@ export type settings = {
   defaultUnit : "kg" | "lb",
   defaultStatistics: string
 };
+export type notifications = {
+  id: string;
+};
 
 const db = new Dexie("keen") as Dexie & {
   categories: EntityTable<categorie, "id">;
   exercises: EntityTable<exercise, "id">;
   days: EntityTable<day, "id">;
   settings: EntityTable<settings, "id">;
+  notifications:EntityTable<settings, "id">;
 };
 
  db.version(1).stores({
   categories: "++id",
   exercises: "++id, categorie_id",
   days: "++id,[exercise_id+date], exercise_id, date",
-  settings: "++id"
+  settings: "++id",
+  notifications : "id"
 });
 
 
