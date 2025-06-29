@@ -28,7 +28,8 @@ export type settings = {
   id: number;
   name : string | null
   dateInit : number | null,
-  defaultUnit : "kg" | "lb"
+  defaultUnit : "kg" | "lb",
+  defaultStatistics: string
 };
 
 const db = new Dexie("keen") as Dexie & {

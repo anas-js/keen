@@ -7,8 +7,9 @@ export default async function InitDB({ stop, router }) {
     if (!isFind) {
       await db.settings.add({
         name: null,
-        dateInit: null, //dateHelper({ setDate: "2025-5-15" })
+        dateInit: null, //
         defaultUnit: "kg",
+        defaultStatistics: "this-week",
       });
     
 

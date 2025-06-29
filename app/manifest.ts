@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Keen',
     short_name: 'Keen',
     description: "تابع اوزانك",
-    start_url: '/dashboard',
+    start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#7AE2CF',

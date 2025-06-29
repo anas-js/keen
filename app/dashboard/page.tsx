@@ -443,7 +443,7 @@ export default function DashboardPage() {
     async function init() {
       const settingsLoad = (await db.settings.get(1)!) as settings;
       setSettings(settingsLoad);
-      await calcAll("this-week", settingsLoad);
+      await calcAll(settingsLoad.defaultStatistics, settingsLoad);
     }
     init();
   }, []);
@@ -453,6 +453,7 @@ export default function DashboardPage() {
   // }
 
   async function refreshDate(e) {
+    await db.settings.update(1,{defaultStatistics:e.currentKey});
     calcAll(e.currentKey, settings).then(() => {
       setSelectdTime({
         title: times[e.currentKey],

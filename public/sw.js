@@ -1,25 +1,43 @@
-const CACHE_NAME = 'offline-keen'
-const urlsToCache = [
-  '/',
-  '/offline',           // صفحة fallback
-  '/pwa/icon-192x192.png',
-  '/pwa/icon-512x512.png',
-]
+const CACHE_NAME = "offline-keen";
 
-self.addEventListener('install', function (event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(urlsToCache)
-    })
-  )
-})
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
+});
 
-self.addEventListener('fetch', function (event) {
+self.addEventListener("activate", (event) => {
+  clients.claim();
+});
+
+// Dynamic caching
+self.addEventListener("fetch", (event) => {
   event.respondWith(
-    fetch(event.request).catch(() =>
-      caches.match(event.request).then(response => {
-        return response || caches.match('/offline')
+    fetch(event.request)
+      .then((response) => {
+        // فقط خزن إذا الاستجابة سليمة (status 200)
+        if (!response || response.status !== 200) {
+          return response;
+        }
+
+        const responseClone = response.clone();
+
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseClone);
+        });
+
+        return response;
       })
-    )
-  )
-})
+      .catch(() => {
+        return caches.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+
+         
+          return new Response(``, {
+            status: 503,
+            statusText: "Service Unavailable",
+          });
+        });
+      })
+  );
+});
